@@ -1,0 +1,9 @@
+﻿<Application x:Class="AcademiaDoZe.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AcademiaDoZe"
+             StartupUri="View/WindowPrincipal.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

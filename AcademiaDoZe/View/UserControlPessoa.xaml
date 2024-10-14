@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="AcademiaDoZe.UserControlPessoa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AcademiaDoZe"
+             xmlns:resources="clr-namespace:AcademiaDoZe.Properties"
+             mc:Ignorable="d" d:DesignWidth="800" Height="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="521*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="LabelID" Foreground="White" Content="ID:" HorizontalAlignment="Left" Margin="17,8,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="110"/>
+        <TextBox x:Name="TextBoxID" Text="{Binding Id}" TabIndex="0" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="19,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Height="23" FontSize="16"/>
+        <Label x:Name="LabelCPF" Foreground="White" Content="CPF:" HorizontalAlignment="Left" Margin="122,9,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="94"/>
+        <TextBox x:Name="TextBoxCPF" Text="{Binding Cpf}" TabIndex="1" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="122,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="23" FontSize="16"/>
+        <Label x:Name="LabelTelefonePessoa" Foreground="White" Content="Telefone:" HorizontalAlignment="Left" Margin="279,8,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="145"/>
+        <TextBox x:Name="TextBoxTelefone" Text="{Binding Telefone}" TabIndex="2" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="279,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="23" FontSize="16"/>
+        <Label x:Name="LabelNome" Foreground="White" Content="Nome:" HorizontalAlignment="Left" Margin="17,68,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="142"/>
+        <TextBox x:Name="TextBoxNome" Text="{Binding Nome}" TabIndex="3" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="19,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="552" Height="24" FontSize="16"/>
+        <Label x:Name="LabelEmailPessoa" Foreground="White" Content="E-mail:" HorizontalAlignment="Left" Margin="180,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="172"/>
+        <TextBox x:Name="TextBoxEmail" Text="{Binding Email}" TabIndex="5" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="180,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="389" Height="26" FontSize="16"/>
+        <Label x:Name="LabelNascimentoPessoa" Foreground="White" Content="Nascimento:" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="81"/>
+        <DatePicker x:Name="DatePickerNascimento" Text="{Binding Nascimento}" TabIndex="4" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="21,155,0,0" VerticalAlignment="Top"/>
+        <local:UserControlLogradouro x:Name="UserControlLogradouroDados" BorderBrush="Gray" BorderThickness="1"  Margin="21,196,209,278">
+            <local:UserControlLogradouro.Background>
+                <ImageBrush/>
+            </local:UserControlLogradouro.Background>
+        </local:UserControlLogradouro>
+        <Label x:Name="LabelNumeroPessoa" Foreground="White" Content="Número:" HorizontalAlignment="Left" Margin="24,430,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="85"/>
+        <TextBox x:Name="TextBoxNumero" Text="{Binding Numero}" TabIndex="14" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="26,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="22" FontSize="16"/>
+        <Label x:Name="LabelComplementoPessoa" Foreground="White" Content="Complemento:" HorizontalAlignment="Left" Margin="166,430,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="30" Width="141"/>
+        <TextBox x:Name="TextBoxComplemento" Text="{Binding Complemento}" TabIndex="15" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="167,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="22" FontSize="16"/>
+    </Grid>
+</UserControl>

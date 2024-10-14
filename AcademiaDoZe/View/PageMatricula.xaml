@@ -1,0 +1,60 @@
+﻿<Page x:Class="AcademiaDoZe.PageMatricula"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AcademiaDoZe"
+      xmlns:resources="clr-namespace:AcademiaDoZe.Properties"
+      mc:Ignorable="d"
+      Title="PageMatricula" Height="817" Width="1096">
+
+    <Grid Margin="0,0,-98,-104">
+        <Label x:Name="LabelCadastrarMatricula" Foreground="White" Content="Cadastrar Matricula" HorizontalAlignment="Left" Margin="15,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <local:UserControlAluno HorizontalAlignment="Left" Margin="15,62,0,0" VerticalAlignment="Top" Width="806"/>
+        <Label x:Name="LabelNome" Foreground="White" Content="Nome:" HorizontalAlignment="Left" Margin="13,134,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="80"/>
+        <TextBox x:Name="TextBoxNome" TabIndex="3" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="15,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="389" Height="24" FontSize="16"/>
+        <Label x:Name="LabelPlano" Foreground="White" Content="Plano:" HorizontalAlignment="Left" Margin="13,199,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="80"/>
+
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="10,225,1069,587"/>
+
+        <RadioButton x:Name="RadioButtonMensal" TabIndex="6" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" Foreground="White" Content="Mensal" Margin="23,237,1002,662" RenderTransformOrigin="0.5,0.5"/>
+
+        <RadioButton x:Name="RadioButtonTrimestral" TabIndex="7" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" Foreground="White" Content="Trimestral" Margin="23,260,1002,642" RenderTransformOrigin="0.5,0.5"/>
+        <RadioButton x:Name="RadioButtonSemestral" TabIndex="8" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" Foreground="White" Content="Semestral" Margin="23,284,1002,618" RenderTransformOrigin="0.5,0.5"/>
+        <RadioButton x:Name="RadioButtonAnual" TabIndex="9" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" Foreground="White" Content="Anual" Margin="23,308,1002,594" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="LabelEntrada" Foreground="White" Content="Entrada:" HorizontalAlignment="Left" Margin="141,199,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="105"/>
+        <DatePicker x:Name="DatePickerEntrada" TabIndex="4" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="143,225,0,0" VerticalAlignment="Top" Width="263"/>
+        <Label x:Name="LabelSaida" Foreground="White" Content="Saída:" HorizontalAlignment="Left" Margin="142,264,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="80"/>
+        <DatePicker x:Name="DatePickerSaida" TabIndex="5" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="144,291,0,0" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="LabelObjetivo" Foreground="White" Content="Objetivo:" HorizontalAlignment="Left" Margin="15,364,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="153"/>
+        <TextBox x:Name="TextBoxObjetivo" TabIndex="10" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="15,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" Height="95" FontFamily="Arial"/>
+        <Label x:Name="LabelObservacaoRestricao" Foreground="White" Content="Observação Restrição:" HorizontalAlignment="Left" Margin="443,364,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="181"/>
+        <TextBox x:Name="TextBoxObservacaoRestricao" TabIndex="11" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="443,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" Height="95" FontFamily="Arial"/>
+        <Button x:Name="ButtonSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="622,508,0,0" VerticalAlignment="Top" Height="42" Width="212" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.006"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label x:Name="LabelRestricao" Foreground="White" Content="Restrição:" HorizontalAlignment="Left" Margin="568,74,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="75"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxNenhum" Content="Nenhum" HorizontalAlignment="Left" Margin="568,103,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxProblemasCardiacos" Content="Problemas Cardíacos" HorizontalAlignment="Left" Margin="568,124,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxProblemasRespiratorios" Content="Problemas Respiratórios" HorizontalAlignment="Left" Margin="568,149,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxLesoesMusculares" Content="Lesões Musculares" HorizontalAlignment="Left" Margin="568,173,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxPressaoAlta" Content="Pressão Alta" HorizontalAlignment="Left" Margin="568,193,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxDiabetes" Content="Diabetes" HorizontalAlignment="Left" Margin="568,214,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxGravidez" Content="Gravidez" HorizontalAlignment="Left" Margin="568,236,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxLabirinto" Content="Labirinto" HorizontalAlignment="Left" Margin="568,259,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxAlergias" Content="Alergias" HorizontalAlignment="Left" Margin="568,282,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxRemedioUsoContinuo" Content="Remédios Uso Continuo" HorizontalAlignment="Left" Margin="568,304,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <CheckBox Foreground="White" x:Name="CheckBoxOutras" Content="Outras" HorizontalAlignment="Left" Margin="568,325,0,0" VerticalAlignment="Top" FontFamily="Arial" Height="16" Width="163"/>
+        <Border BorderBrush="White" BorderThickness="1" Margin="558,95,446,573"/>
+        <Label x:Name="LabelLaudoMedico" Foreground="White" Content="Laudo Médico:" HorizontalAlignment="Left" Margin="789,139,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="167"/>
+        <Button x:Name="ButtonLaudoMedico" Content="Laudo Médico" HorizontalAlignment="Left" Margin="789,170,0,0" VerticalAlignment="Top" Height="19" Width="156"/>
+        <TextBox x:Name="TextBoxLaudo" TabIndex="12" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="789,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="24" FontSize="16"/>
+    </Grid>
+</Page>

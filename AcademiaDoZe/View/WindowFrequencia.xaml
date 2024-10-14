@@ -1,0 +1,40 @@
+﻿<Window Background="#3b3c3c" x:Class="AcademiaDoZe.WindowFrequencia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AcademiaDoZe"
+        xmlns:resources="clr-namespace:AcademiaDoZe.Properties"
+        mc:Ignorable="d"
+        Title="Frequência" Height="385" Width="671">
+
+    <Grid Margin="0,0,10,0">
+        <Label x:Name="LabelCadastrarFrequencia" Foreground="White" Content="Cadastrar Frequência" HorizontalAlignment="Left" Margin="15,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <local:UserControlAluno Margin="10,62,-175,-62"/>
+        <Label x:Name="LabelEntrada" Foreground="White" Content="Entrada:" HorizontalAlignment="Left" Margin="11,137,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="81"/>
+        <DatePicker x:Name="DatePickerEntrada" HorizontalAlignment="Left" Margin="15,165,0,0" VerticalAlignment="Top" Width="384"/>
+        <Label x:Name="LabelSaida" Foreground="White" Content="Saída:" HorizontalAlignment="Left" Margin="14,211,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="81"/>
+        <DatePicker x:Name="DatePickerSaida" HorizontalAlignment="Left" Margin="17,247,0,0" VerticalAlignment="Top" Width="382"/>
+        <Button x:Name="ButtonSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="252,292,0,0" VerticalAlignment="Top" Height="42" Width="146" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.006"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="ButtonFechar" Content="Fechar" HorizontalAlignment="Left" Margin="16,293,0,0" VerticalAlignment="Top" Height="42" Width="146" RenderTransformOrigin="0.5,0.5" Click="ButtonFechar_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.006"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>

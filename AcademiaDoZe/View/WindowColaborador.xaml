@@ -1,0 +1,25 @@
+﻿<Window xmlns:AcademiaDoZe="clr-namespace:AcademiaDoZe"  x:Class="AcademiaDoZe.View.WindowColaborador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AcademiaDoZe.View"
+        xmlns:enums="clr-namespace:AcademiaDoZe.Model"
+
+        mc:Ignorable="d"
+        Title="WindowColaborador" Height="740" Width="1136" Background="Black">
+
+    <Grid Margin="0,0,-60,-135">
+        <Label x:Name="LabelCadastrarColaborador" Foreground="White" Content="Cadastrar Colaborador" HorizontalAlignment="Left" Margin="16,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <AcademiaDoZe:UserControlPessoa Margin="0,62,385,113"/>
+        <Label x:Name="LabelAdmissao" Foreground="White" Content="Admissão:" HorizontalAlignment="Left" Margin="620,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="80"/>
+        <DatePicker x:Name="DatePickerAdmissao" HorizontalAlignment="Left" Margin="624,155,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="labelTipo" Content="Tipo:" HorizontalAlignment="Left" Margin="613,212,0,0" VerticalAlignment="Top" Foreground="#FFC4C4C4"/>
+        <ComboBox x:Name="ComboBoxTipo" HorizontalAlignment="Left" Margin="620,243,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Tipo}"/>
+
+        <Label x:Name="labelVinculo" Content="Vínculo:" HorizontalAlignment="Left" Margin="620,296,0,0" VerticalAlignment="Top" Foreground="#FFC4C4C4"/>
+        <ComboBox x:Name="ComboBoxVinculo" HorizontalAlignment="Left" Margin="620,327,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Vinculo}"/>
+        <Button x:Name="ButtonSalvar" Command="{Binding SalvarColaboradorCommand}" TabIndex="16" Content="Salvar" HorizontalAlignment="Left" Margin="355,506,0,0" VerticalAlignment="Top" Height="42" Width="212"/>
+    </Grid>
+</Window>

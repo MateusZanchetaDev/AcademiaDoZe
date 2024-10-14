@@ -1,0 +1,15 @@
+﻿<Window xmlns:AcademiaDoZe="clr-namespace:AcademiaDoZe"  x:Class="AcademiaDoZe.View.WindowAluno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AcademiaDoZe.View"
+        mc:Ignorable="d"
+        Title="WindowAluno" Height="657" Width="1080" Background="Black">
+
+    <Grid Margin="0,0,0,-100">
+        <Label x:Name="LabelCadastrarAluno" Foreground="White" Content="Cadastrar Aluno" HorizontalAlignment="Left" Margin="15,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <AcademiaDoZe:UserControlPessoa Margin="0,62,270,-5"/>
+        <Button x:Name="ButtonSalvar" Command="{Binding SalvarAlunoCommand}" TabIndex="16" Content="Salvar" HorizontalAlignment="Left" Margin="355,506,0,0" VerticalAlignment="Top" Height="42" Width="212"/>
+    </Grid>
+</Window>

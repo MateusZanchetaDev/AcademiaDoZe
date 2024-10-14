@@ -1,0 +1,67 @@
+﻿<Page x:Class="AcademiaDoZe.PageAvaliacao"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AcademiaDoZe"
+      xmlns:resources="clr-namespace:AcademiaDoZe.Properties"
+      mc:Ignorable="d"
+      Title="PageAvaliacao" Height="904" Width="1150">
+
+    <Grid Margin="0,0,-114,-126">
+        <Label x:Name="LabelCadastrarAvaliacao" Foreground="White" Content="Cadastrar Avaliação" HorizontalAlignment="Left" Margin="15,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <local:UserControlAluno HorizontalAlignment="Left" Margin="15,67,0,0" VerticalAlignment="Top" Width="807"/>
+        <Label x:Name="LabelNome" Foreground="White" Content="Nome Aluno:" HorizontalAlignment="Left" Margin="546,75,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxNome" TabIndex="3" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="548,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelData" Foreground="White" Content="Data:" HorizontalAlignment="Left" Margin="16,137,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="81"/>
+        <DatePicker x:Name="DatePickerData" TabIndex="4" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label x:Name="LabelPeso" Foreground="White" Content="Peso (kg):" HorizontalAlignment="Left" Margin="18,217,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxPeso" TabIndex="6" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelAltura" Foreground="White" Content="Altura:" HorizontalAlignment="Left" Margin="208,217,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxAltura" TabIndex="7" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="210,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelTorax" Foreground="White" Content="Tórax:" HorizontalAlignment="Left" Margin="18,288,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxTorax" TabIndex="8" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelCintura" Foreground="White" Content="Cintura:" HorizontalAlignment="Left" Margin="208,288,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxCintura" TabIndex="9" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="210,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelAntebracoDir" Foreground="White" Content="Antebraço Dir:" HorizontalAlignment="Left" Margin="18,355,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxAntebracoDir" TabIndex="11" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelAntebracoEsq" Foreground="White" Content="Antebraço Esq:" HorizontalAlignment="Left" Margin="208,355,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxAntebracoEsq" TabIndex="12" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="210,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelCoxaDir" Foreground="White" Content="Coxa Dir:" HorizontalAlignment="Left" Margin="18,426,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxCoxaDir" TabIndex="15" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelCoxaEsq" Foreground="White" Content="Coxa Esq:" HorizontalAlignment="Left" Margin="208,426,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxCoxaEsq" TabIndex="16" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="210,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelQuadril" Foreground="White" Content="Quadril:" HorizontalAlignment="Left" Margin="400,288,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxQuadril" TabIndex="10" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="402,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelBicepsDir" Foreground="White" Content="Biceps Dir:" HorizontalAlignment="Left" Margin="400,355,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxBicepsDir" TabIndex="13" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="402,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelBicepsEsq" Foreground="White" Content="Biceps Esq:" HorizontalAlignment="Left" Margin="400,426,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxBicepsEsq" TabIndex="17" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="402,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelPanturilhaDir" Foreground="White" Content="Panturilha Dir:" HorizontalAlignment="Left" Margin="588,355,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxPanturilhaDir" TabIndex="14" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="590,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelPanturilhaEsq" Foreground="White" Content="Panturilha Esq:" HorizontalAlignment="Left" Margin="588,426,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxPanturilhaEsq" TabIndex="18" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="590,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelMassaMagra" Foreground="White" Content="Massa Magra:" HorizontalAlignment="Left" Margin="773,150,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxMassaMagra" TabIndex="19" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="775,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelPercentualGordura" Foreground="White" Content="Percentual Gordura:" HorizontalAlignment="Left" Margin="773,355,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxPercentualGordura" TabIndex="22" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="775,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelIMC" Foreground="White" Content="IMC:" HorizontalAlignment="Left" Margin="773,426,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxIMC" TabIndex="23" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="775,452,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelMassaGorda" Foreground="White" Content="Massa Gorda:" HorizontalAlignment="Left" Margin="773,217,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxMassaGorda" TabIndex="20" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="775,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelPesoIdeal" Foreground="White" Content="Peso Ideal:" HorizontalAlignment="Left" Margin="773,288,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="98"/>
+        <TextBox x:Name="TextBoxPesoIdeal" TabIndex="21" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="775,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" FontSize="16" FontFamily="Arial"/>
+        <Label x:Name="LabelObservacoes" Foreground="White" Content="Observações:" HorizontalAlignment="Left" Margin="20,487,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="26" Width="78"/>
+        <TextBox x:Name="TextBoxObservacoes" TabIndex="24" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="20,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" Height="95" FontFamily="Arial"/>
+        <Button x:Name="ButtonSalvar" Content="Salvar" TabIndex="25" HorizontalAlignment="Left" Margin="707,569,0,0" VerticalAlignment="Top" Height="42" Width="212" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.006"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+    </Grid>
+</Page>
