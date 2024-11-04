@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AcademiaDoZe.View"
         xmlns:enums="clr-namespace:AcademiaDoZe.Model"
-
         mc:Ignorable="d"
         Title="WindowColaborador" Height="740" Width="1136" Background="Black">
 

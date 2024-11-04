@@ -21,18 +21,12 @@ namespace AcademiaDoZe
     /// </summary>
     public partial class PageLogradouro : Page
     {
-        private string ConnectionString { get; set; }
-        private string ProviderName { get; set; }
-
         public PageLogradouro(string providerName, string connectionString)
         {
             InitializeComponent();
             this.KeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;
-
-            ConnectionString = connectionString;
-            ProviderName = providerName;
         }
 
         private void Box_GotFocus(object sender, System.Windows.RoutedEventArgs e)

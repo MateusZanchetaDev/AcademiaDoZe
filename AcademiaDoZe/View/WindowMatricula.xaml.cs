@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademiaDoZe.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AcademiaDoZe
+namespace AcademiaDoZe.View
 {
     /// <summary>
-    /// Interaction logic for PageMatricula.xaml
+    /// Interaction logic for WindowMatricula.xaml
     /// </summary>
-    public partial class PageMatricula : Page
+    public partial class WindowMatricula : Window
     {
-        public PageMatricula()
+        public WindowMatricula()
         {
             InitializeComponent();
             DatePickerEntrada.PreviewTextInput += Validacoes.TxtDataHora_PreviewTextInput;
@@ -28,6 +28,11 @@ namespace AcademiaDoZe
             this.KeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;
+
+            ComboBoxRestricao.ItemsSource = Enum.GetValues(typeof(Model.RestricaoMedica));
+            ComboBoxPlano.ItemsSource = Enum.GetValues(typeof(Model.PlanoMatricula));
+
+            DataContext = new MatriculaCadastroViewModel();
         }
 
         private void Box_GotFocus(object sender, System.Windows.RoutedEventArgs e)

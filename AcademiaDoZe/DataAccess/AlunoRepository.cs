@@ -29,7 +29,7 @@ namespace AcademiaDoZe.DataAccess
             using var comando = factory.CreateCommand();
             comando!.Connection = conexao;
             conexao.Open();
-            comando.CommandText = @"SELECT id_aluno, cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha FROM tb_aluno;";
+            comando.CommandText = @"SELECT id_aluno, cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, foto FROM tb_aluno;";
             using var reader = comando.ExecuteReader();
             
             List<Aluno> dadosRetorno = new List<Aluno>();
@@ -46,7 +46,8 @@ namespace AcademiaDoZe.DataAccess
                     LogradouroId = reader.GetInt32(6),
                     Numero = reader.GetString(7),
                     Complemento = reader.GetString(8),
-                    Senha = reader.GetString(9)
+                    //Senha = reader.GetString(9),
+                    Foto = reader.IsDBNull(10) ? null : (byte[])reader[10]
                 });
             }
             return dadosRetorno;
@@ -67,9 +68,10 @@ namespace AcademiaDoZe.DataAccess
             var logradouro_id = comando.CreateParameter(); logradouro_id.ParameterName = "@logradouro_id"; logradouro_id.Value = dado.LogradouroId; comando.Parameters.Add(logradouro_id);
             var numero = comando.CreateParameter(); numero.ParameterName = "@numero"; numero.Value = dado.Numero; comando.Parameters.Add(numero);
             var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento"; complemento.Value = dado.Complemento; comando.Parameters.Add(complemento);
-            var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = ""; comando.Parameters.Add(senha);
+            //var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = ClassFuncoes.Sha256Hash(dado.Senha); comando.Parameters.Add(senha);
+            var foto = comando.CreateParameter(); foto.ParameterName = "@foto"; foto.Value = dado.Foto; comando.Parameters.Add(foto);
             conexao.Open();
-            comando.CommandText = @"INSERT INTO tb_aluno (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha) VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @senha);";
+            comando.CommandText = @"INSERT INTO tb_aluno (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, foto) VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @foto);";
             
             var linhas = comando.ExecuteNonQuery();
         }
@@ -90,9 +92,10 @@ namespace AcademiaDoZe.DataAccess
             var logradouro_id = comando.CreateParameter(); logradouro_id.ParameterName = "@logradouro_id"; logradouro_id.Value = dado.LogradouroId; comando.Parameters.Add(logradouro_id);
             var numero = comando.CreateParameter(); numero.ParameterName = "@numero"; numero.Value = dado.Numero; comando.Parameters.Add(numero);
             var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento"; complemento.Value = dado.Complemento; comando.Parameters.Add(complemento);
-            var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = dado.Senha; comando.Parameters.Add(senha);
+            //var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = ClassFuncoes.Sha256Hash(dado.Senha); comando.Parameters.Add(senha);
+            var foto = comando.CreateParameter(); foto.ParameterName = "@foto"; foto.Value = dado.Foto; comando.Parameters.Add(foto);
             conexao.Open();
-            comando.CommandText = @"UPDATE tb_aluno SET cpf = @cpf, telefone = @telefone, nome = @nome, nascimento = @nascimento, email = @email, logradouro_id = @logradouro_id, numero = @numero, complemento = @complemento, senha = @senha WHERE id_aluno = @id;";
+            comando.CommandText = @"UPDATE tb_aluno SET cpf = @cpf, telefone = @telefone, nome = @nome, nascimento = @nascimento, email = @email, logradouro_id = @logradouro_id, numero = @numero, complemento = @complemento, foto = @foto WHERE id_aluno = @id;";
             
             _ = comando.ExecuteNonQuery();
         }

@@ -1,4 +1,5 @@
 ﻿using AcademiaDoZe.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,36 @@ namespace AcademiaDoZe.ViewModel
         public string Numero { get { return _aluno.Numero; } set { _aluno.Numero = value; OnPropertyChanged("Numero"); } }
         public string Complemento { get { return _aluno.Complemento; } set { _aluno.Complemento = value; OnPropertyChanged("Complemento"); } }
         public string Senha { get { return _aluno.Senha; } set { _aluno.Senha = value; OnPropertyChanged("Senha"); } }
+        public byte[] Foto { get { return _aluno.Foto; } set { _aluno.Foto = value; OnPropertyChanged("Foto"); } }
+
         public ICommand SalvarAlunoCommand { get; set; }
         public event EventHandler AlunoSalvo;
+        public RelayCommand SelecionarFotoCommand { get; set; }
 
         public AlunoCadastroViewModel(Aluno aluno = null)
         {
             _aluno = aluno ?? new Aluno();
+            SelecionarFotoCommand = new RelayCommand(SelecionarFoto);
             SalvarAlunoCommand = new RelayCommand(SalvarAluno);
-           
+
             SelectedLogradouro = Logradouros.FirstOrDefault(l => l.Id == _aluno.LogradouroId);
         }
+
+        private void SelecionarFoto(object parameter)
+        {
+            OpenFileDialog openFileDialog = new();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Foto = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+            }
+        }
+
         private void SalvarAluno(object obj)
         {
             AlunoSalvo?.Invoke(this, EventArgs.Empty);
         }
+
         public Aluno GetAluno()
         {
             _aluno.LogradouroId = SelectedLogradouro.Id;

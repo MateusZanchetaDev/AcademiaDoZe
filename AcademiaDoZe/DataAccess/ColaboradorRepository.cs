@@ -102,6 +102,11 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@senha";
+            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            comando.Parameters.Add(senha);
+
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
             admissao.Value = dado.Admissao;
@@ -119,14 +124,12 @@ namespace AcademiaDoZe.DataAccess
 
             conexao.Open();
 
-            //Comando sem o parameter "Senha"
             comando.CommandText = @"INSERT INTO tb_colaborador  
-                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, admissao, tipo, vinculo)  
-                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @admissao, @tipo, @vinculo);";
+                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, admissao, tipo, vinculo)  
+                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @senha, @admissao, @tipo, @vinculo);";
 
             var linhas = comando.ExecuteNonQuery();
         }
-
 
         public void Update(Colaborador dado)
         {
@@ -175,10 +178,10 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
-            //var senha = comando.CreateParameter();
-            //senha.ParameterName = "@senha";
-            //senha.Value = dado.Senha;
-            //comando.Parameters.Add(senha);
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@senha";
+            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            comando.Parameters.Add(senha);
 
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
@@ -204,13 +207,12 @@ namespace AcademiaDoZe.DataAccess
             comando.CommandText = @"UPDATE tb_colaborador 
                             SET cpf = @cpf, telefone = @telefone, nome = @nome, nascimento = @nascimento, 
                             email = @email, logradouro_id = @logradouro_id, numero = @numero, 
-                            complemento = @complemento, admissao = @admissao, 
+                            complemento = @complemento, senha = @senha, admissao = @admissao, 
                             tipo = @tipo, vinculo = @vinculo 
                             WHERE id_colaborador = @id;";
 
             var linhas = comando.ExecuteNonQuery();
         }
-
 
         public void Delete(Colaborador dado)
         {
@@ -227,6 +229,48 @@ namespace AcademiaDoZe.DataAccess
             comando.CommandText = @"DELETE FROM tb_colaborador WHERE id_colaborador = @id;";
             
             _ = comando.ExecuteNonQuery();
+        }
+
+        public Colaborador ValidaLogin(Colaborador dado)
+        {
+            var conexao = factory.CreateConnection(); 
+            conexao!.ConnectionString = ConnectionString; 
+            var comando = factory.CreateCommand(); 
+            comando!.Connection = conexao;
+
+            var cpf = comando.CreateParameter();
+            cpf.ParameterName = "@cpf";
+            cpf.Value = dado.Cpf;
+            comando.Parameters.Add(cpf);
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@senha";
+            senha.Value = dado.Senha;
+            comando.Parameters.Add(senha);
+            conexao.Open();
+            comando.CommandText = @"SELECT id_colaborador, cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, admissao, tipo, vinculo FROM tb_colaborador WHERE cpf = @cpf AND senha = @senha;";
+            var reader = comando.ExecuteReader();
+
+            Colaborador? dadosRetorno = null;
+            if (reader.Read())
+            {
+                dadosRetorno = new Colaborador
+                {
+                    Id = reader.GetInt32(0),
+                    Cpf = reader.GetString(1),
+                    Telefone = reader.GetString(2),
+                    Nome = reader.GetString(3),
+                    Nascimento = reader.GetDateTime(4),
+                    Email = reader.GetString(5),
+                    LogradouroId = reader.GetInt32(6),
+                    Numero = reader.GetString(7),
+                    Complemento = reader.GetString(8),
+                    Senha = reader.GetString(9),
+                    Admissao = reader.GetDateTime(10),
+                    Tipo = (EnumColaboradorTipo)reader.GetString(11)[0],
+                    Vinculo = (EnumColaboradorVinculo)reader.GetString(12)[0]
+                };
+            }
+            return dadosRetorno;
         }
     }
 }

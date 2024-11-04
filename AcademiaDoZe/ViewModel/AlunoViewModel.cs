@@ -13,8 +13,13 @@ namespace AcademiaDoZe.ViewModel
 {
     public class AlunoViewModel : ViewModelBase
     {
-        public ObservableCollection<Aluno> Alunos { get; set; }
         private Aluno _selectedAluno;
+        private AlunoRepository _repository;
+        public ObservableCollection<Aluno> Alunos { get; set; }
+        public RelayCommand AlunoAdicionarCommand { get; set; }
+        public RelayCommand AlunoAtualizarCommand { get; set; }
+        public RelayCommand AlunoRemoverCommand { get; set; }
+
         public Aluno SelectedAluno
         {
             get { return _selectedAluno; }
@@ -22,15 +27,11 @@ namespace AcademiaDoZe.ViewModel
             {
                 _selectedAluno = value;
                 OnPropertyChanged("SelectedAluno");
-                // libera somente se houver um Aluno selecionado
                 AlunoAtualizarCommand.RaiseCanExecuteChanged();
                 AlunoRemoverCommand.RaiseCanExecuteChanged();
             }
         }
-        private AlunoRepository _repository;
-        public RelayCommand AlunoAdicionarCommand { get; set; }
-        public RelayCommand AlunoAtualizarCommand { get; set; }
-        public RelayCommand AlunoRemoverCommand { get; set; }
+        
         public AlunoViewModel()
         {
             Alunos = new ObservableCollection<Aluno>();
@@ -90,7 +91,7 @@ namespace AcademiaDoZe.ViewModel
                 {
                     var AlunoEditado = viewModel.GetAluno();
                     _repository.Update(AlunoEditado);
-                    //GetAll();
+                    GetAll();
                     janelaCadastro.Close();
                     MessageBox.Show("Sucesso.");
                 }

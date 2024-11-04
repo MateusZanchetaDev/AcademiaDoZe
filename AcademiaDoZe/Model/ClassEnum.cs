@@ -8,6 +8,44 @@ using System.Threading.Tasks;
 
 namespace AcademiaDoZe.Model
 {
+    public enum PlanoMatricula
+    {
+        [Description("Mensal")]
+        Mensal = '1',
+        [Description("Trimestral")]
+        Trimestral = '2',
+        [Description("Semestral")]
+        Semestral = '3',
+        [Description("Anual")]
+        Anual = '4'
+    }
+
+    public enum RestricaoMedica
+    {
+        [Description("Nenhum")]
+        Nenhum = '1',
+        [Description("Problemas Cardíacos")]
+        ProblemasCardiacos = '2',
+        [Description("Problemas Respiratórios")]
+        ProblemasRespiratorios = '3',
+        [Description("Lesões Musculares")]
+        LesoesMusculares = '4',
+        [Description("Pressão Alta")]
+        PressaoAlta = '5',
+        [Description("Diabetes")]
+        Diabetes = '6',
+        [Description("Gravidez")]
+        Gravidez = '7',
+        [Description("Labirinto")]
+        Labirinto = '8',
+        [Description("Alergias")]
+        Alergias = '9',
+        [Description("Remédios Uso Contínuo")]
+        RemediosUsoContinuo = 'A',
+        [Description("Outras")]
+        Outras = 'B'
+    }
+
     public enum EnumColaboradorTipo
     {
         [Description("Administrador")]

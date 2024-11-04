@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademiaDoZe.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,13 @@ namespace AcademiaDoZe
             this.KeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;
+            
+            DataContext = new ViewModel.ColaboradorViewModel();
+            
+            if (DataContext is ColaboradorViewModel colaboradorViewModel)
+            {
+                colaboradorViewModel.LoginSucceeded += OnLoginSucceeded;
+            }
         }
 
         private void Box_GotFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -58,6 +66,12 @@ namespace AcademiaDoZe
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void OnLoginSucceeded(object? sender, EventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }

@@ -3,27 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AcademiaDoZe"
+        xmlns:local="clr-namespace:AcademiaDoZe.View"
         xmlns:resources="clr-namespace:AcademiaDoZe.Properties"
         mc:Ignorable="d"
         Title="Login" Height="336" Width="263">
+
+    <Window.Resources>
+        <local:MultiParameterConverter x:Key="MultiParameterConverter"/>
+    </Window.Resources>
+
     <Grid>
         <Label x:Name="LabelLogin" Foreground="White" Content="Login" HorizontalAlignment="Left" Margin="15,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
         <Label x:Name="LabelCPF" Foreground="White" Content="CPF:" HorizontalAlignment="Left" Margin="15,74,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="69"/>
         <TextBox x:Name="TextBoxCPF" TabIndex="0" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="15,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="23" FontSize="16"/>
         <Label x:Name="LabelSenha" Foreground="White" Content="Senha:" HorizontalAlignment="Left" Margin="15,148,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="82"/>
         <TextBox x:Name="TextBoxSenha" TabIndex="1" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="15,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="23" FontSize="16"/>
-        <Button x:Name="ButtonSalvar" Content="Salvar" Margin="148,232,32,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.006"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
+
+        <Button x:Name="buttonSalvar" Command="{Binding ColaboradorValidaLoginCommand}" TabIndex="2" Content="Login" HorizontalAlignment="Left" Margin="135,250,0,0" VerticalAlignment="Top" FontSize="15" Width="82" Height="33">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource MultiParameterConverter}">
+                    <Binding ElementName="textBoxCpf" Path="Text"/>
+                    <Binding ElementName="passwordBoxSenha" Path="Text"/>
+                </MultiBinding>
+            </Button.CommandParameter>
         </Button>
-        <Button x:Name="ButtonFechar" TabIndex="2" Content="Fechar" Margin="16,232,162,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.5,0.5" Click="ButtonFechar_Click">
+
+        <Button x:Name="ButtonFechar" TabIndex="2" Content="Fechar" Margin="19,250,159,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.5,0.5" Click="ButtonFechar_Click" FontSize="15">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

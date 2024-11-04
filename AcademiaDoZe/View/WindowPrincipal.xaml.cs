@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Configuration;
 using AcademiaDoZe.ViewModel;
 using AcademiaDoZe.View;
+using Microsoft.Windows.Themes;
 
 namespace AcademiaDoZe
 {
@@ -37,10 +38,12 @@ namespace AcademiaDoZe
             this.Closing += MainWindow_Closing;
 
             _resourceManager = new ResourceManager("AcademiaDoZe.Properties.Idioma", typeof(TelaPrincipal).Assembly);
-            
+
             Validacoes.ValidaConexaoDB();
             ProviderName = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             ConnectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
+            LiberaMenus(true, '1');
+            //LiberaMenus(false, '0');
             MainFrame.Navigate(new PageHome());
         }
 
@@ -72,7 +75,7 @@ namespace AcademiaDoZe
 
         public void ButtonHome_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate (new PageHome());
+            MainFrame.Navigate(new PageHome());
         }
 
         private void ButtonColaborador_Click(object sender, RoutedEventArgs e)
@@ -96,14 +99,32 @@ namespace AcademiaDoZe
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new PageHome());
-            WindowLogin windowLogin = new();
+            if (ButtonHome.IsEnabled)
+            {
+                LiberaMenus(false, '0');
+                return;
+            }
+            WindowLogin windowLogin = new WindowLogin();
+            windowLogin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            var colaboradorViewModel = windowLogin.DataContext as ColaboradorViewModel;
             windowLogin.ShowDialog();
+
+            if (colaboradorViewModel.SelectedColaborador != null && colaboradorViewModel.SelectedColaborador.Id > 0)
+            {
+                txtTop.Text = $"Bem-vindo, {colaboradorViewModel.SelectedColaborador.Nome} - Tipo: {colaboradorViewModel.SelectedColaborador.Tipo}";
+                LiberaMenus(true, (char)colaboradorViewModel.SelectedColaborador.Tipo);
+            }
+            else
+            {
+                txtTop.Text = "Login falhou. Nenhum colaborador selecionado.";
+                LiberaMenus(false, '0');
+            }
         }
 
         private void ButtonMatricula_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new PageMatricula());
+            MainFrame.Navigate(new PageListaMatricula());
         }
 
         private void ButtonAvaliacao_Click(object sender, RoutedEventArgs e)
@@ -130,6 +151,32 @@ namespace AcademiaDoZe
             Application.Current.MainWindow = WindowMain;
             WindowMain.Show();
             Close();
+        }
+
+        public void LiberaMenus(bool liberar, char grupo)
+        {
+            if (!liberar)
+            {
+                ButtonHome.IsEnabled = liberar; ButtonLogradouro.IsEnabled = liberar; ButtonAluno.IsEnabled = liberar; ButtonColaborador.IsEnabled = liberar; ButtonMatricula.IsEnabled = liberar;
+                ButtonAvaliacao.IsEnabled = liberar; ButtonFrequencia.IsEnabled = liberar; ButtonAulas.IsEnabled = liberar; ButtonTreinos.IsEnabled = liberar; ButtonLogin.IsEnabled = !liberar; ButtonConfig.IsEnabled = liberar;
+                
+                ButtonHome_Click(null, null);
+            }
+            else if (grupo == '1') // Administrador - 1
+            {
+                ButtonHome.IsEnabled = liberar; ButtonLogradouro.IsEnabled = liberar; ButtonAluno.IsEnabled = liberar; ButtonColaborador.IsEnabled = liberar; ButtonMatricula.IsEnabled = liberar;
+                ButtonAvaliacao.IsEnabled = liberar; ButtonFrequencia.IsEnabled = liberar; ButtonAulas.IsEnabled = liberar; ButtonTreinos.IsEnabled = liberar; ButtonLogin.IsEnabled = liberar; ButtonConfig.IsEnabled = liberar;
+            }
+            else if (grupo == '2') // Atendente - 2
+            {
+                ButtonHome.IsEnabled = liberar; ButtonLogradouro.IsEnabled = liberar; ButtonAluno.IsEnabled = liberar; ButtonColaborador.IsEnabled = !liberar; ButtonMatricula.IsEnabled = liberar;
+                ButtonAvaliacao.IsEnabled = !liberar; ButtonFrequencia.IsEnabled = liberar; ButtonAulas.IsEnabled = liberar; ButtonTreinos.IsEnabled = !liberar; ButtonLogin.IsEnabled = liberar; ButtonConfig.IsEnabled = !liberar;
+            }
+            else if (grupo == '3') // Instrutor – 3
+            {
+                ButtonHome.IsEnabled = liberar; ButtonLogradouro.IsEnabled = !liberar; ButtonAluno.IsEnabled = !liberar; ButtonColaborador.IsEnabled = !liberar; ButtonMatricula.IsEnabled = !liberar;
+                ButtonAvaliacao.IsEnabled = liberar; ButtonFrequencia.IsEnabled = liberar; ButtonAulas.IsEnabled = liberar; ButtonTreinos.IsEnabled = liberar; ButtonLogin.IsEnabled = liberar; ButtonConfig.IsEnabled = !liberar;
+            }
         }
     }
 }

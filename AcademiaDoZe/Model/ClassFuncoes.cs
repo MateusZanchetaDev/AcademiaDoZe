@@ -67,5 +67,13 @@ namespace AcademiaDoZe
                 AjustaResources(child);
             }
         }
+
+        public static string Sha256Hash(string senha)
+        {
+            using var sha256 = System.Security.Cryptography.SHA256.Create();
+            byte[] bytes =
+            sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senha));
+            return Convert.ToBase64String(bytes);
+        }
     }
 }

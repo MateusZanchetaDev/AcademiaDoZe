@@ -8,6 +8,7 @@
         mc:Ignorable="d" Title="Academia do Zé" Height="700" Width="1295">
 
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="63*"/>
             <ColumnDefinition Width="436*"/>
@@ -50,5 +51,6 @@
                 </Frame.ContextMenu>
             </Frame>
         </StackPanel>
+        <TextBox x:Name="txtTop" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" Width="120" Height="37" Margin="485,365,527,0" VerticalAlignment="Top" Grid.Column="1"/>
     </Grid>
 </Window>
