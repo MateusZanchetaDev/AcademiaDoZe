@@ -22,7 +22,7 @@
         <Label x:Name="LabelEmailPessoa" Foreground="White" Content="E-mail:" HorizontalAlignment="Left" Margin="180,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="172"/>
         <TextBox x:Name="TextBoxEmail" Text="{Binding Email}" TabIndex="5" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="180,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="389" Height="26" FontSize="16"/>
         <Label x:Name="LabelNascimentoPessoa" Foreground="White" Content="Nascimento:" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="81"/>
-        <DatePicker x:Name="DatePickerNascimento" Text="{Binding Nascimento}" TabIndex="4" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="21,155,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePickerNascimento" SelectedDate="{Binding Nascimento, Mode=TwoWay}" TabIndex="4" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="21,155,0,0" VerticalAlignment="Top"/>
         <local:UserControlLogradouro x:Name="UserControlLogradouroDados" BorderBrush="Gray" BorderThickness="1"  Margin="21,196,209,278">
             <local:UserControlLogradouro.Background>
                 <ImageBrush/>

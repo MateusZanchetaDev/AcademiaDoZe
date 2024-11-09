@@ -1,4 +1,5 @@
 ﻿using AcademiaDoZe.Model;
+using Mysqlx.Connection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AcademiaDoZe.DataAccess
 {
@@ -56,8 +58,49 @@ namespace AcademiaDoZe.DataAccess
             return dadosRetorno;
         }
 
+        public Aluno GetAlunoById(int alunoId)
+        {
+            using var conexao = factory.CreateConnection();
+            conexao!.ConnectionString = ConnectionString;
+            using var comando = factory.CreateCommand();
+            comando!.Connection = conexao;
+
+            comando.CommandText = "SELECT * FROM tb_aluno WHERE id_aluno = @aluno_id";
+
+            var parametro = comando.CreateParameter();
+            parametro.ParameterName = "@aluno_id";
+            parametro.Value = alunoId;
+            comando.Parameters.Add(parametro);
+
+            conexao.Open();
+            using var reader = comando.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return new Aluno
+                {
+                    Id = reader.GetInt32(reader.GetOrdinal("id_aluno")),
+                    Nome = reader.GetString(reader.GetOrdinal("nome")),
+                    Nascimento = reader.GetDateTime(reader.GetOrdinal("nascimento")),
+                };
+            }
+
+            return null;
+        }
+
         public void Add(Matricula dado)
         {
+            Aluno alunoVerifica = GetAlunoById(dado.AlunoId);
+
+            if (alunoVerifica != null)
+            {
+                int idade = DateTime.Now.Year - alunoVerifica.Nascimento.Year;
+
+                if (idade <= 11)
+                {
+                    throw new Exception($"O aluno {alunoVerifica.Nome} precisa ser maior de 12 anos. Idade: {idade}");
+                }
+            }
             using var conexao = factory.CreateConnection();
             conexao!.ConnectionString = ConnectionString;
             using var comando = factory.CreateCommand();

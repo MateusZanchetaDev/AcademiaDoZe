@@ -17,6 +17,7 @@ namespace AcademiaDoZe.ViewModel
         public string Telefone { get { return _aluno.Telefone; } set { _aluno.Telefone = value; OnPropertyChanged("Telefone"); } }
         public string Nome { get { return _aluno.Nome; } set { _aluno.Nome = value; OnPropertyChanged("Nome"); } }
         public DateTime Nascimento { get { return _aluno.Nascimento; } set { _aluno.Nascimento = value; OnPropertyChanged("Nascimento"); } }
+        //public DateTime Nascimento { get { return _nascimento; } set { _nascimento = value; OnPropertyChanged(nameof(Nascimento)); } }
         public string Email { get { return _aluno.Email; } set { _aluno.Email = value; OnPropertyChanged("Email"); } }
         public int LogradouroId { get { return _aluno.LogradouroId; } set { _aluno.LogradouroId = value; OnPropertyChanged("LogradouroId"); } }
         public string Numero { get { return _aluno.Numero; } set { _aluno.Numero = value; OnPropertyChanged("Numero"); } }
