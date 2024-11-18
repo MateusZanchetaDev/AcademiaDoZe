@@ -96,11 +96,30 @@ namespace AcademiaDoZe.DataAccess
             {
                 int idade = DateTime.Now.Year - alunoVerifica.Nascimento.Year;
 
-                if (idade <= 11)
+                if (idade < 12)
                 {
                     throw new Exception($"O aluno {alunoVerifica.Nome} precisa ser maior de 12 anos. Idade: {idade}");
                 }
+
+                if (idade < 16 && (dado.LaudoMedico == null || dado.LaudoMedico.Length == 0))
+                {
+                    throw new Exception($"O aluno {alunoVerifica.Nome} é menor de 16 anos e deve fornecer um laudo médico.");
+                }
+
+                if (dado.RestricaoMedica != RestricaoMedica.Nenhum)
+                {
+                    if (dado.LaudoMedico == null || dado.LaudoMedico.Length == 0)
+                    {
+                        throw new Exception($"O aluno {alunoVerifica.Nome} possui uma restrição médica e deve fornecer um laudo médico para realizar atividades.");
+                    }
+
+                    if (string.IsNullOrWhiteSpace(dado.ObsRestricao))
+                    {
+                        throw new Exception($"O aluno {alunoVerifica.Nome} possui uma restrição médica e deve fornecer uma observação detalhada sobre a restrição.");
+                    }
+                }
             }
+
             using var conexao = factory.CreateConnection();
             conexao!.ConnectionString = ConnectionString;
             using var comando = factory.CreateCommand();
@@ -160,6 +179,36 @@ namespace AcademiaDoZe.DataAccess
 
         public void Update(Matricula dado)
         {
+            Aluno alunoVerifica = GetAlunoById(dado.AlunoId);
+
+            if (alunoVerifica != null)
+            {
+                int idade = DateTime.Now.Year - alunoVerifica.Nascimento.Year;
+
+                if (idade < 12)
+                {
+                    throw new Exception($"O aluno {alunoVerifica.Nome} precisa ser maior de 12 anos. Idade: {idade}");
+                }
+
+                if (idade < 16 && (dado.LaudoMedico == null || dado.LaudoMedico.Length == 0))
+                {
+                    throw new Exception($"O aluno {alunoVerifica.Nome} é menor de 16 anos e deve fornecer um laudo médico.");
+                }
+
+                if (dado.RestricaoMedica != RestricaoMedica.Nenhum)
+                {
+                    if (dado.LaudoMedico == null || dado.LaudoMedico.Length == 0)
+                    {
+                        throw new Exception($"O aluno {alunoVerifica.Nome} possui uma restrição médica e deve fornecer um laudo médico para realizar atividades.");
+                    }
+
+                    if (string.IsNullOrWhiteSpace(dado.ObsRestricao))
+                    {
+                        throw new Exception($"O aluno {alunoVerifica.Nome} possui uma restrição médica e deve fornecer uma observação detalhada sobre a restrição.");
+                    }
+                }
+            }
+
             using var conexao = factory.CreateConnection();
             conexao!.ConnectionString = ConnectionString;
             using var comando = factory.CreateCommand();
@@ -240,6 +289,47 @@ namespace AcademiaDoZe.DataAccess
             comando.CommandText = @"DELETE FROM tb_matricula WHERE id_matricula = @id_matricula;";
 
             var linhas = comando.ExecuteNonQuery();
+        }
+
+        public Aluno GetOneByCpf(string cpf)
+        {
+            using var conexao = factory.CreateConnection();
+            conexao!.ConnectionString = ConnectionString;
+            using var comando = factory.CreateCommand();
+            comando!.Connection = conexao;
+
+            var paramCpf = comando.CreateParameter();
+            paramCpf.ParameterName = "@cpf";
+            paramCpf.Value = cpf.Trim();
+            comando.Parameters.Add(paramCpf);
+
+            conexao.Open();
+
+            comando.CommandText = @"SELECT id_aluno, nome, cpf, nascimento, telefone, email, logradouro_id, numero, complemento, foto
+                                  FROM tb_aluno 
+                                  WHERE TRIM(cpf) = @cpf;";
+
+            using var reader = comando.ExecuteReader();
+
+            Aluno aluno = null;
+            if (reader.Read())
+            {
+                aluno = new Aluno
+                {
+                    Id = reader.GetInt32(0),
+                    Nome = reader.GetString(1),
+                    Cpf = reader.GetString(2),
+                    Nascimento = reader.GetDateTime(3),
+                    Telefone = reader.GetString(4),
+                    Email = reader.GetString(5),
+                    LogradouroId = reader.GetInt32(6),
+                    Numero = reader.GetString(7),
+                    Complemento = reader.GetString(8),
+                    Foto = reader.IsDBNull(9) ? null : (byte[])reader[9]
+                };
+            }
+
+            return aluno;
         }
     }
 }

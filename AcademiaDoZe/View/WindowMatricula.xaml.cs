@@ -25,6 +25,7 @@ namespace AcademiaDoZe.View
             InitializeComponent();
             DatePickerEntrada.PreviewTextInput += Validacoes.TxtDataHora_PreviewTextInput;
             DatePickerSaida.PreviewTextInput += Validacoes.TxtDataHora_PreviewTextInput;
+            TextBoxCPF.PreviewTextInput += Validacoes.TxtCPF_PreviewTextInput;
             this.KeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;

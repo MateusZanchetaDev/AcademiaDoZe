@@ -21,7 +21,7 @@
         </StackPanel>
         
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
-            <DataGrid ItemsSource="{Binding Colaboradors}" SelectedItem="{Binding SelectedColaborador}" AutoGenerateColumns="False" IsReadOnly="False">
+            <DataGrid ItemsSource="{Binding Colaboradores}" SelectedItem="{Binding SelectedColaborador}" AutoGenerateColumns="False" IsReadOnly="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Cpf" Binding="{Binding Cpf}"/>

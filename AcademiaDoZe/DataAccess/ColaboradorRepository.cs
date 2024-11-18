@@ -102,10 +102,10 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
-            var senha = comando.CreateParameter();
-            senha.ParameterName = "@senha";
-            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
-            comando.Parameters.Add(senha);
+            //var senha = comando.CreateParameter();
+            //senha.ParameterName = "@senha";
+            //senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            //comando.Parameters.Add(senha);
 
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
@@ -125,8 +125,8 @@ namespace AcademiaDoZe.DataAccess
             conexao.Open();
 
             comando.CommandText = @"INSERT INTO tb_colaborador  
-                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, admissao, tipo, vinculo)  
-                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @senha, @admissao, @tipo, @vinculo);";
+                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, admissao, tipo, vinculo)  
+                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @admissao, @tipo, @vinculo);";
 
             var linhas = comando.ExecuteNonQuery();
         }
@@ -178,10 +178,10 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
-            var senha = comando.CreateParameter();
-            senha.ParameterName = "@senha";
-            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
-            comando.Parameters.Add(senha);
+            //var senha = comando.CreateParameter();
+            //senha.ParameterName = "@senha";
+            //senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            //comando.Parameters.Add(senha);
 
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
@@ -207,7 +207,7 @@ namespace AcademiaDoZe.DataAccess
             comando.CommandText = @"UPDATE tb_colaborador 
                             SET cpf = @cpf, telefone = @telefone, nome = @nome, nascimento = @nascimento, 
                             email = @email, logradouro_id = @logradouro_id, numero = @numero, 
-                            complemento = @complemento, senha = @senha, admissao = @admissao, 
+                            complemento = @complemento, admissao = @admissao, 
                             tipo = @tipo, vinculo = @vinculo 
                             WHERE id_colaborador = @id;";
 

@@ -27,9 +27,9 @@
         </GroupBox>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="602,0,0,0" Width="551">
-            <Button x:Name="buttonNovo" Margin="3" Padding="3" CommandParameter="{Binding}" Command="{Binding LogradouroAdicionarCommand}" Content="Novo" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <Button x:Name="buttonEditar" Margin="3" Padding="3" CommandParameter="{Binding}" Command="{Binding LogradouroAtualizarCommand}" Content="Editar" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <Button x:Name="buttonExcluir" Margin="3" Padding="3" CommandParameter="{Binding}" Command="{Binding LogradouroRemoverCommand}" Content="Deletar" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button x:Name="buttonNovo" Margin="3" Padding="3"  Command="{Binding LogradouroAdicionarCommand}" Content="Novo" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button x:Name="buttonEditar" Margin="3" Padding="3"  Command="{Binding LogradouroAtualizarCommand}" Content="Editar" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button x:Name="buttonExcluir" Margin="3" Padding="3"  Command="{Binding LogradouroRemoverCommand}" Content="Deletar" Background="#FF1A1A1A" Foreground="#FFFDFDFD" Width="130" Height="30" FontWeight="Bold" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" />
         </StackPanel>
 
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Margin="10,387,0,-22">

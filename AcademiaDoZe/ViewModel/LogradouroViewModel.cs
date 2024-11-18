@@ -67,7 +67,7 @@ namespace AcademiaDoZe.ViewModel
 
         private bool CanExecuteSubmit(object parameter)
         {
-            return SelectedLogradouro != null;
+            return true;
         }
 
         private void FiltrarLogradouro(object parameter)

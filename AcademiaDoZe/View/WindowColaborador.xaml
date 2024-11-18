@@ -12,7 +12,7 @@
         <Label x:Name="LabelCadastrarColaborador" Foreground="White" Content="Cadastrar Colaborador" HorizontalAlignment="Left" Margin="16,24,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
         <AcademiaDoZe:UserControlPessoa Margin="0,62,385,113"/>
         <Label x:Name="LabelAdmissao" Foreground="White" Content="Admissão:" HorizontalAlignment="Left" Margin="620,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="80"/>
-        <DatePicker x:Name="DatePickerAdmissao" HorizontalAlignment="Left" Margin="624,155,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePickerAdmissao" HorizontalAlignment="Left" SelectedDate="{Binding Admissao, Mode=TwoWay}" Margin="624,155,0,0" VerticalAlignment="Top"/>
 
         <Label x:Name="labelTipo" Content="Tipo:" HorizontalAlignment="Left" Margin="613,212,0,0" VerticalAlignment="Top" Foreground="#FFC4C4C4"/>
         <ComboBox x:Name="ComboBoxTipo" HorizontalAlignment="Left" Margin="620,243,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Tipo}"/>

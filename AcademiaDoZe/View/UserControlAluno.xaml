@@ -13,7 +13,7 @@
         <Label x:Name="LabelIdAluno" Foreground="White" Content="ID Aluno:" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="165"/>
         <TextBox x:Name="TextBoxIdAluno" Text="{Binding AlunoId}" TabIndex="1" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="128,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="23" FontSize="16"/>
         <Label x:Name="LabelCPF" Foreground="White" Content="CPF Aluno:" HorizontalAlignment="Left" Margin="324,9,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="92"/>
-        <TextBox x:Name="TextBoxCPF" TabIndex="2" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="23" FontSize="16"/>
-
+        <TextBox x:Name="TextBoxCPF" TabIndex="2" Text="{Binding SelectedMatricula.Cpf}" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="23" FontSize="16"/>
+        <Button Content="Pesquisar" Command="{Binding PesquisarAlunoCPFCommand}" CommandParameter="{Binding Text, ElementName=TextBoxCPF}" HorizontalAlignment="Left" Margin="501,35,0,0" VerticalAlignment="Top" Width="57" Height="23" />
     </Grid>
 </UserControl>

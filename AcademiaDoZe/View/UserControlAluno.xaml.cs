@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AcademiaDoZe.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,16 @@ namespace AcademiaDoZe
     /// </summary>
     public partial class UserControlAluno : UserControl
     {
+        private MatriculaViewModel ViewModelMatricula;
         public UserControlAluno()
         {
             InitializeComponent();
-            TextBoxCPF.PreviewTextInput += Validacoes.TxtCPF_PreviewTextInput;
+            //TextBoxCPF.PreviewTextInput += Validacoes.TxtCPF_PreviewTextInput;
             this.KeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;
+
+            //DataContext = new MatriculaCadastroViewModel();
         }
 
         private void Box_GotFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -55,6 +59,11 @@ namespace AcademiaDoZe
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ClassFuncoes.AjustaResources(this);
+        }
+
+        private void ButtonPesquisar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
