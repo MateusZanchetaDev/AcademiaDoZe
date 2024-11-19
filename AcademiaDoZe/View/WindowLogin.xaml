@@ -22,8 +22,8 @@
         <Button x:Name="buttonSalvar" Command="{Binding ColaboradorValidaLoginCommand}" TabIndex="2" Content="Login" HorizontalAlignment="Left" Margin="135,250,0,0" VerticalAlignment="Top" FontSize="15" Width="82" Height="33">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource MultiParameterConverter}">
-                    <Binding ElementName="textBoxCpf" Path="Text"/>
-                    <Binding ElementName="passwordBoxSenha" Path="Text"/>
+                    <Binding ElementName="TextBoxCPF" Path="Text"/>
+                    <Binding ElementName="TextBoxSenha" Path="Text"/>
                 </MultiBinding>
             </Button.CommandParameter>
         </Button>

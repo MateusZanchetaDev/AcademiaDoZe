@@ -136,19 +136,19 @@ namespace AcademiaDoZe.ViewModel
             {
                 var colaborador = new Colaborador
                 {
-                    Cpf = "123.456.789-10",
-                    Senha = "12345"
+                    Cpf = "",
+                    Senha = ""
                 };
 
-                //if (obj is object[] objTela && objTela.Length >= 2)
-                //{
-                //    colaborador.Cpf = objTela[0] as string;
-                //    colaborador.Senha = objTela[1] as string;
-                //}
-                //else
-                //{
-                //    throw new Exception("CPF/Senha não informados.");
-                //}
+                if (obj is object[] objTela && objTela.Length >= 2)
+                {
+                    colaborador.Cpf = objTela[0] as string;
+                    colaborador.Senha = objTela[1] as string;
+                }
+                else
+                {
+                    throw new Exception("CPF/Senha não informados.");
+                }
 
                 SelectedColaborador = _repository.ValidaLogin(colaborador);
 

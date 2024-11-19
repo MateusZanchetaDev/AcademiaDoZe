@@ -28,7 +28,7 @@ namespace AcademiaDoZe
             this.PreviewKeyDown += new System.Windows.Input.KeyEventHandler(ClassFuncoes.Window_KeyDown);
             this.Loaded += Page_Loaded;
             
-            DataContext = new ViewModel.ColaboradorViewModel();
+            DataContext = new ColaboradorViewModel();
             
             if (DataContext is ColaboradorViewModel colaboradorViewModel)
             {

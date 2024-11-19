@@ -12,7 +12,7 @@
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <Label x:Name="LabelID" Foreground="White" Content="ID:" HorizontalAlignment="Left" Margin="17,8,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="110"/>
-        <TextBox x:Name="TextBoxID" Text="{Binding Id}" TabIndex="0" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="19,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Height="23" FontSize="16"/>
+        <TextBox x:Name="TextBoxID" Text="{Binding Id}" TabIndex="0" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="19,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Height="23" FontSize="16" IsEnabled="False"/>
         <Label x:Name="LabelCPF" Foreground="White" Content="CPF:" HorizontalAlignment="Left" Margin="122,9,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="94"/>
         <TextBox x:Name="TextBoxCPF" Text="{Binding Cpf}" TabIndex="1" GotFocus="Box_GotFocus" LostFocus="Box_LostFocus" HorizontalAlignment="Left" Margin="122,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="23" FontSize="16"/>
         <Label x:Name="LabelTelefonePessoa" Foreground="White" Content="Telefone:" HorizontalAlignment="Left" Margin="279,8,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="21" Width="145"/>

@@ -14,11 +14,14 @@
         <Label x:Name="LabelAdmissao" Foreground="White" Content="Admissão:" HorizontalAlignment="Left" Margin="620,127,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="1.178,0.797" Height="22" Width="80"/>
         <DatePicker x:Name="DatePickerAdmissao" HorizontalAlignment="Left" SelectedDate="{Binding Admissao, Mode=TwoWay}" Margin="624,155,0,0" VerticalAlignment="Top"/>
 
-        <Label x:Name="labelTipo" Content="Tipo:" HorizontalAlignment="Left" Margin="613,212,0,0" VerticalAlignment="Top" Foreground="#FFC4C4C4"/>
-        <ComboBox x:Name="ComboBoxTipo" HorizontalAlignment="Left" Margin="620,243,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Tipo}"/>
+        <Label x:Name="labelTipo" Content="Tipo:" HorizontalAlignment="Left" Margin="620,212,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="ComboBoxTipo" HorizontalAlignment="Left" Margin="624,243,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Tipo}"/>
 
-        <Label x:Name="labelVinculo" Content="Vínculo:" HorizontalAlignment="Left" Margin="620,296,0,0" VerticalAlignment="Top" Foreground="#FFC4C4C4"/>
-        <ComboBox x:Name="ComboBoxVinculo" HorizontalAlignment="Left" Margin="620,327,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Vinculo}"/>
+        <Label x:Name="LabelSenha" Content="Senha:" Foreground="White" HorizontalAlignment="Left" Margin="620,386,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="TextBoxSenha"  Text="{Binding Senha}" HorizontalAlignment="Left" Margin="624,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label x:Name="labelVinculo" Content="Vínculo:" HorizontalAlignment="Left" Margin="620,296,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="ComboBoxVinculo" HorizontalAlignment="Left" Margin="624,327,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Vinculo}"/>
         <Button x:Name="ButtonSalvar" Command="{Binding SalvarColaboradorCommand}" TabIndex="16" Content="Salvar" HorizontalAlignment="Left" Margin="355,506,0,0" VerticalAlignment="Top" Height="42" Width="212"/>
     </Grid>
 </Window>

@@ -51,6 +51,6 @@
                 </Frame.ContextMenu>
             </Frame>
         </StackPanel>
-        <TextBox x:Name="txtTop" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" Width="120" Height="37" Margin="485,365,527,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtTop" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" Width="120" Height="37" Margin="485,365,527,0" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
     </Grid>
 </Window>

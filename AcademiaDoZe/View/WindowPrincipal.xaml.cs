@@ -42,8 +42,8 @@ namespace AcademiaDoZe
             Validacoes.ValidaConexaoDB();
             ProviderName = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             ConnectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            LiberaMenus(true, '1');
-            //LiberaMenus(false, '0');
+            //LiberaMenus(true, '1');
+            LiberaMenus(false, '0');
             MainFrame.Navigate(new PageHome());
         }
 

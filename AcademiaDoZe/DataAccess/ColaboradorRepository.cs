@@ -46,7 +46,7 @@ namespace AcademiaDoZe.DataAccess
                     LogradouroId = reader.GetInt32(6),
                     Numero = reader.GetString(7),
                     Complemento = reader.GetString(8),
-                    //Senha = reader.GetString(9),
+                    Senha = reader.GetString(9),
                     Admissao = reader.GetDateTime(10),
                     Tipo = (EnumColaboradorTipo)reader.GetString(11)[0],
                     Vinculo = (EnumColaboradorVinculo)reader.GetString(12)[0]
@@ -102,10 +102,10 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
-            //var senha = comando.CreateParameter();
-            //senha.ParameterName = "@senha";
-            //senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
-            //comando.Parameters.Add(senha);
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@senha";
+            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            comando.Parameters.Add(senha);
 
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
@@ -125,8 +125,8 @@ namespace AcademiaDoZe.DataAccess
             conexao.Open();
 
             comando.CommandText = @"INSERT INTO tb_colaborador  
-                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, admissao, tipo, vinculo)  
-                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @admissao, @tipo, @vinculo);";
+                        (cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, admissao, tipo, vinculo)  
+                        VALUES (@cpf, @telefone, @nome, @nascimento, @email, @logradouro_id, @numero, @complemento, @senha, @admissao, @tipo, @vinculo);";
 
             var linhas = comando.ExecuteNonQuery();
         }
@@ -178,10 +178,10 @@ namespace AcademiaDoZe.DataAccess
             complemento.Value = dado.Complemento;
             comando.Parameters.Add(complemento);
 
-            //var senha = comando.CreateParameter();
-            //senha.ParameterName = "@senha";
-            //senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
-            //comando.Parameters.Add(senha);
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@senha";
+            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
+            comando.Parameters.Add(senha);
 
             var admissao = comando.CreateParameter();
             admissao.ParameterName = "@admissao";
@@ -207,7 +207,7 @@ namespace AcademiaDoZe.DataAccess
             comando.CommandText = @"UPDATE tb_colaborador 
                             SET cpf = @cpf, telefone = @telefone, nome = @nome, nascimento = @nascimento, 
                             email = @email, logradouro_id = @logradouro_id, numero = @numero, 
-                            complemento = @complemento, admissao = @admissao, 
+                            complemento = @complemento, senha = @senha, admissao = @admissao, 
                             tipo = @tipo, vinculo = @vinculo 
                             WHERE id_colaborador = @id;";
 
@@ -233,42 +233,41 @@ namespace AcademiaDoZe.DataAccess
 
         public Colaborador ValidaLogin(Colaborador dado)
         {
-            var conexao = factory.CreateConnection(); 
-            conexao!.ConnectionString = ConnectionString; 
-            var comando = factory.CreateCommand(); 
-            comando!.Connection = conexao;
+            using var conexao = factory.CreateConnection();
+            conexao!.ConnectionString = ConnectionString;
+            using var comando = factory.CreateCommand(); 
+            comando!.Connection = conexao; 
 
             var cpf = comando.CreateParameter();
             cpf.ParameterName = "@cpf";
             cpf.Value = dado.Cpf;
             comando.Parameters.Add(cpf);
+
             var senha = comando.CreateParameter();
             senha.ParameterName = "@senha";
-            senha.Value = dado.Senha;
+            senha.Value = ClassFuncoes.Sha256Hash(dado.Senha);
             comando.Parameters.Add(senha);
+
             conexao.Open();
             comando.CommandText = @"SELECT id_colaborador, cpf, telefone, nome, nascimento, email, logradouro_id, numero, complemento, senha, admissao, tipo, vinculo FROM tb_colaborador WHERE cpf = @cpf AND senha = @senha;";
-            var reader = comando.ExecuteReader();
+            using var reader = comando.ExecuteReader();
 
-            Colaborador? dadosRetorno = null;
-            if (reader.Read())
+            Colaborador dadosRetorno = new Colaborador();
+            while (reader.Read())
             {
-                dadosRetorno = new Colaborador
-                {
-                    Id = reader.GetInt32(0),
-                    Cpf = reader.GetString(1),
-                    Telefone = reader.GetString(2),
-                    Nome = reader.GetString(3),
-                    Nascimento = reader.GetDateTime(4),
-                    Email = reader.GetString(5),
-                    LogradouroId = reader.GetInt32(6),
-                    Numero = reader.GetString(7),
-                    Complemento = reader.GetString(8),
-                    Senha = reader.GetString(9),
-                    Admissao = reader.GetDateTime(10),
-                    Tipo = (EnumColaboradorTipo)reader.GetString(11)[0],
-                    Vinculo = (EnumColaboradorVinculo)reader.GetString(12)[0]
-                };
+                dadosRetorno.Id = reader.GetInt32(0);
+                dadosRetorno.Cpf = reader.GetString(1);
+                dadosRetorno.Telefone = reader.GetString(2);
+                dadosRetorno.Nome = reader.GetString(3);
+                dadosRetorno.Nascimento = reader.GetDateTime(4);
+                dadosRetorno.Email = reader.GetString(5);
+                dadosRetorno.LogradouroId = reader.GetInt32(6);
+                dadosRetorno.Numero = reader.GetString(7);
+                dadosRetorno.Complemento = reader.GetString(8);
+                dadosRetorno.Senha = reader.GetString(9);
+                dadosRetorno.Admissao = reader.GetDateTime(10);
+                dadosRetorno.Tipo = (EnumColaboradorTipo)reader.GetString(11)[0];
+                dadosRetorno.Vinculo = (EnumColaboradorVinculo)reader.GetString(12)[0];
             }
             return dadosRetorno;
         }
