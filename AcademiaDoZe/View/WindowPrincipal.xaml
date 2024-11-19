@@ -8,7 +8,6 @@
         mc:Ignorable="d" Title="Academia do Zé" Height="700" Width="1295">
 
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="63*"/>
             <ColumnDefinition Width="436*"/>
