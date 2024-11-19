@@ -112,12 +112,12 @@ namespace AcademiaDoZe
 
             if (colaboradorViewModel.SelectedColaborador != null && colaboradorViewModel.SelectedColaborador.Id > 0)
             {
-                txtTop.Text = $"Bem-vindo, {colaboradorViewModel.SelectedColaborador.Nome} - Tipo: {colaboradorViewModel.SelectedColaborador.Tipo}";
+                MessageBox.Show($"Bem-vindo, {colaboradorViewModel.SelectedColaborador.Nome} - Tipo: {colaboradorViewModel.SelectedColaborador.Tipo}");
                 LiberaMenus(true, (char)colaboradorViewModel.SelectedColaborador.Tipo);
             }
             else
             {
-                txtTop.Text = "Login falhou. Nenhum colaborador selecionado.";
+                MessageBox.Show("Login falhou. Nenhum colaborador encontrado.");
                 LiberaMenus(false, '0');
             }
         }
