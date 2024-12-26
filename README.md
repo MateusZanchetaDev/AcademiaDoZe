@@ -1,6 +1,6 @@
 # AcademiaDoZe
 
-- Utilizado WPF e C#.
+- Utilizado WPF, XAML e C#.
   
 - Arquitetura MVVM.
   
