@@ -1,5 +1,7 @@
 # AcademiaDoZe
 
-Sistema voltado para academia.
-
-CRUDs utilizando SQL Server.
+- Utilizado WPF e C#.
+  
+- Arquitetura MVVM.
+  
+- Desenvolvido CRUDs com integração no SQL Server.
